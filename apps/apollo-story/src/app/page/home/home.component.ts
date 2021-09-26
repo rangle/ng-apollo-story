@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { APOLLO_OPTIONS } from 'apollo-angular';
 
 @Component({
   selector: 'nx-angular-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class HomeComponent {
+  constructor(@Inject(APOLLO_OPTIONS) options: string) {
+    console.log(options);
   }
-
 }

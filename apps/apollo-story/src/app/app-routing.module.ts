@@ -7,11 +7,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./page/rates/rates.module').then((m) => m.RatesModule),
   },
-  // {
-  //   path: '/',
-  //   loadChildren: () =>
-  //     import('./page/home/home.module').then((m) => m.HomeModule),
-  // },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./page/home/home.module').then((m) => m.HomeModule),
+  },
 ];
 
 @NgModule({
