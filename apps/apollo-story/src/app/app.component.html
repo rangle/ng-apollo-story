@@ -34,6 +34,8 @@
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
+  <router-outlet></router-outlet>
+
   <h2>Resources &amp; Tools</h2>
   <p>Thank you for using and showing some ♥ for Nx.</p>
   <div class="flex github-star-container">
@@ -112,7 +114,7 @@
     <pre>
   # Generate UI lib
   nx g @nrwl/angular:lib ui
-  
+
   # Add a component
   nx g @nrwl/angular:component xyz --project ui</pre
     >
@@ -126,10 +128,10 @@
     <pre>
   # see what's been affected by changes
   nx affected:dep-graph
-  
+
   # run tests for current changes
   nx affected:test
-  
+
   # run e2e tests for current changes
   nx affected:e2e
   </pre
