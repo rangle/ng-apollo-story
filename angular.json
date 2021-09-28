@@ -125,6 +125,41 @@
         }
       }
     },
+    "apollo-story-data": {
+      "projectType": "library",
+      "root": "libs/apollo-story-data",
+      "sourceRoot": "libs/apollo-story-data/src",
+      "prefix": "nx-angular",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/apollo-story-data"],
+          "options": {
+            "jestConfig": "libs/apollo-story-data/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/apollo-story-data/src/**/*.ts",
+              "libs/apollo-story-data/src/**/*.html"
+            ]
+          }
+        },
+        "generate": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx graphql-codegen --config libs/apollo-story-data/codegen.yml"
+              }
+            ]
+          }
+        }
+      }
+    },
     "apollo-story-e2e": {
       "root": "apps/apollo-story-e2e",
       "sourceRoot": "apps/apollo-story-e2e/src",

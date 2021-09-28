@@ -5,12 +5,11 @@ const routes: Routes = [
   {
     path: 'rates',
     loadChildren: () =>
-      import('./page/rates/rates.module').then((m) => m.RatesModule),
+      import('./rates/rates.module').then((m) => m.RatesModule),
   },
   {
     path: '',
-    loadChildren: () =>
-      import('./page/home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
 ];
 

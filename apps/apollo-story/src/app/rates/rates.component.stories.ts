@@ -7,12 +7,6 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [],
-      // providers: [
-      //   {
-      //     provide: APOLLO_OPTIONS,
-      //     useValue: 'test',
-      //   },
-      // ],
     }),
   ],
 } as Meta<RatesComponent>;

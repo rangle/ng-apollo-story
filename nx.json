@@ -36,6 +36,9 @@
     "apollo-story": {
       "tags": []
     },
+    "apollo-story-data": {
+      "tags": []
+    },
     "apollo-story-e2e": {
       "tags": [],
       "implicitDependencies": ["apollo-story"]

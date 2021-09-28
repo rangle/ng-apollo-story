@@ -1,0 +1,7 @@
+query getCurrency($currency: String!) {
+  rates: rates(currency: $currency) {
+    name
+    currency
+    rate
+  }
+}
