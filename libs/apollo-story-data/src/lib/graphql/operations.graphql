@@ -1,0 +1,8 @@
+# This generates the queries in the generated output file.
+query getCurrency($currency: String!) {
+  rates: rates(currency: $currency) {
+    name
+    currency
+    rate
+  }
+}

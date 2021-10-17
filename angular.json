@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/apollo-story",
       "sourceRoot": "apps/apollo-story/src",
-      "prefix": "nx-angular",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -129,7 +129,7 @@
       "projectType": "library",
       "root": "libs/apollo-story-data",
       "sourceRoot": "libs/apollo-story-data/src",
-      "prefix": "nx-angular",
+      "prefix": "data",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -153,26 +153,17 @@
           "options": {
             "commands": [
               {
-                "command": "npx graphql-codegen --config libs/apollo-story-data/codegen.yml"
-              }
-            ]
-          }
-        },
-        "download-schema": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
+                "description": "download schema",
+                "command": "npx rover graph introspect https://48p1r2roz4.sse.codesandbox.io > libs/apollo-story-data/src/lib/schemas/schema.graphql"
+              },
               {
-                "command": "npx rover graph introspect https://48p1r2roz4.sse.codesandbox.io > libs/apollo-story-data/src/lib/schemas/schema.json"
+                "description": "generate resolvers",
+                "command": "npx graphql-codegen --config libs/apollo-story-data/codegen.yml"
+              },
+              {
+                "description": "generate mocks",
+                "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/currency-mock.json"
               }
-            ]
-          }
-        },
-        "generate-mock": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              { "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/currency-mock.json" }
             ]
           }
         }

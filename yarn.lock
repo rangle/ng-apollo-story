@@ -262,7 +262,7 @@
   dependencies:
     tslib "^2.2.0"
 
-"@apollo/client@>=2.0.0", "@apollo/client@^3.4.13", "@apollo/client@latest":
+"@apollo/client@^3.4.13":
   version "3.4.13"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.4.13.tgz#81670c27b376e80e3845ecf6468e534d908fa5b5"
   integrity sha512-/nH8z/0X6WJ+wtUREHTlKQGX4lo6u3XkF1hy+k4eCxLZzT5+VRw1rm92iIkj1H85vep/eE/KV3DdRq1x3t9NnQ==
@@ -279,13 +279,6 @@
     ts-invariant "^0.9.0"
     tslib "^2.3.0"
     zen-observable-ts "~1.1.0"
-
-"@apollo/react-testing@>=3.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@apollo/react-testing/-/react-testing-4.0.0.tgz#9fd1991584510c2ac051d986547ceccbc9c0a30a"
-  integrity sha512-P7Z/flUHpRRZYc3FkIqxZH9XD3FuP2Sgks1IXqGq2Zb7qI0aaTfVeRsLYmZNUcFOh2pTHxs0NXgPnH1VfYOpig==
-  dependencies:
-    "@apollo/client" latest
 
 "@apollo/rover@^0.3.0":
   version "0.3.0"
@@ -2945,7 +2938,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.3.8", "@storybook/addons@^6", "@storybook/addons@^6.3.0":
+"@storybook/addons@6.3.8", "@storybook/addons@^6.3.0":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.8.tgz#c4a839ae9b86fb4a1183466db6eb16201c1a0553"
   integrity sha512-TzYk1f/wvfoGDkLxXIx85ii5ED7IfGP/6eu00/i2Hyn4uGqdNi/ltSOJxnxa+DZv8KjYQRVAEo/Fbh95IEXI1Q==
@@ -2992,7 +2985,7 @@
     util-deprecate "^1.0.2"
     webpack "4"
 
-"@storybook/api@6.3.8", "@storybook/api@^6", "@storybook/api@^6.3.0":
+"@storybook/api@6.3.8", "@storybook/api@^6.3.0":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.3.8.tgz#251bcf6cc3a4e0b908bea7fb0aa9e48d6c48d720"
   integrity sha512-8b61KnWhN+sA+Gq+AHH3M4qM0L8pNS9DtdfPi5GUGWzOg6IZ1EgYVsk9afEwkNESxyZ+GM2O6mGu05J0HfyqNg==
@@ -3210,7 +3203,7 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.3.8", "@storybook/components@^6", "@storybook/components@^6.3.0":
+"@storybook/components@6.3.8", "@storybook/components@^6.3.0":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.8.tgz#cb84b0245d8784d41e7e6be25a0d5774363e5b87"
   integrity sha512-zIvCk7MAL9z17EI58h7WE/TgFTm0njGwFkQrbXOgGkkKYoFt/yrrs8HqylcqBqfTivJNiXJNnmmx0ooJ83PIwA==
@@ -3812,15 +3805,15 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.1.tgz#f3647623199ca920960006b3dccf633ea905f243"
   integrity sha512-4/Z9DMPKFexZj/Gn3LylFgamNKHm4K3QDi0gz9B26Uk0c8izYf97B5fxfpspMNkWlFupblKM/nV8+NA9Ffvr+w==
 
-"@types/node@14.14.33":
-  version "14.14.33"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.33.tgz#9e4f8c64345522e4e8ce77b334a8aaa64e2b6c78"
-  integrity sha512-oJqcTrgPUF29oUP8AsUqbXGJNuPutsetaa9kTQAQce5Lx5dTYWV02ScBiT/k1BX/Z7pKeqedmvp39Wu4zR7N7g==
-
 "@types/node@^14.0.10", "@types/node@^14.14.31":
   version "14.17.19"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.19.tgz#7341e9ac1b5d748d7a3ddc04336ed536a6f91c31"
   integrity sha512-jjYI6NkyfXykucU6ELEoT64QyKOdvaA6enOqKtP4xUsGY0X0ZUZz29fUmrTRo+7v7c6TgDu82q3GHHaCEkqZwA==
+
+"@types/node@^16.11.1":
+  version "16.11.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.1.tgz#2e50a649a50fc403433a14f829eface1a3443e97"
+  integrity sha512-PYGcJHL9mwl1Ek3PLiYgyEKtwTMmkMw4vbiyz/ps3pfdRYLVv+SN7qHVAImrjdAXxgluDEw6Ph4lyv+m9UpRmA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -15298,18 +15291,6 @@ store2@^2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
-
-storybook-addon-apollo-client@^4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/storybook-addon-apollo-client/-/storybook-addon-apollo-client-4.0.9.tgz#cf08ff63726d84782e0cd38ecd15b1c3daeadae1"
-  integrity sha512-oOMEtc08lHLjXU0fi9PHE0kEmEX1lnXe99mTjFaeE21r/3Bja7iy+LiUHV4bu7cqR+WhHckNfecj0RuLg+tB3Q==
-  dependencies:
-    "@storybook/addons" "^6"
-    "@storybook/api" "^6"
-    "@storybook/components" "^6"
-  optionalDependencies:
-    "@apollo/client" ">=2.0.0"
-    "@apollo/react-testing" ">=3.0.0"
 
 storybook-addon-outline@^1.4.1:
   version "1.4.1"

@@ -1,33 +1,13 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { addMocksToSchema } from '@graphql-tools/mock';
 import { graphql } from 'graphql';
+import * as fs from 'fs';
 
 // Fill this in with the schema string
-const schemaString = `""""""
-directive @cacheControl on FIELD_DEFINITION | OBJECT | INTERFACE
-""""""
-type Query {
-  """"""
-  rates("""""" currency: String!): [ExchangeRate]
-}
-""""""
-type ExchangeRate {
-  """"""
-  currency: String
-  """"""
-  rate: String
-  """"""
-  name: String
-}
-enum CacheControlScope {
-  """"""
-  PUBLIC
-  """"""
-  PRIVATE
-}
-"""The \`Upload\` scalar type represents a file upload."""
-scalar Upload
-`;
+const schemaString = fs.readFileSync(
+  'libs/apollo-story-data/src/lib/schemas/schema.graphql',
+  'utf8'
+);
 
 const mocks = {
   ExchangeRate: () => ({
