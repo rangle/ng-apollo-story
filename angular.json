@@ -157,6 +157,24 @@
               }
             ]
           }
+        },
+        "download-schema": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx rover graph introspect https://48p1r2roz4.sse.codesandbox.io > libs/apollo-story-data/src/lib/schemas/schema.json"
+              }
+            ]
+          }
+        },
+        "generate-mock": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              { "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/currency-mock.json" }
+            ]
+          }
         }
       }
     },
