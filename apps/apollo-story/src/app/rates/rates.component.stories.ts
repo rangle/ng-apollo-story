@@ -1,20 +1,30 @@
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { RatesComponent } from './rates.component';
+import { currencyMock } from '@nx-angular/apollo-story-data';
+import { NetworkStatus } from '@apollo/client';
 
 export default {
-  title: 'RatesComponent',
+  title: 'Pages/Rates',
   component: RatesComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [],
-    }),
-  ],
-} as Meta<RatesComponent>;
+  decorators: [moduleMetadata({ declarations: [RatesComponent] })],
+} as Meta;
 
-const Template: Story<RatesComponent> = (args: RatesComponent) => ({
-  component: RatesComponent,
+const Template: Story<RatesComponent> = (args) => ({
   props: args,
+  template: `<app-rates [ratesData]="ratesData"></app-rates>`,
 });
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Rates = Template.bind({});
+Rates.args = {
+  ...Template.args,
+  ratesData: {
+    ...currencyMock,
+    loading: false,
+    networkStatus: NetworkStatus.ready,
+  },
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...Template.args,
+};

@@ -123,7 +123,8 @@
             }
           }
         }
-      }
+      },
+      "tags": []
     },
     "apollo-story-data": {
       "projectType": "library",
@@ -167,7 +168,8 @@
             ]
           }
         }
-      }
+      },
+      "tags": []
     },
     "apollo-story-e2e": {
       "root": "apps/apollo-story-e2e",
@@ -194,12 +196,10 @@
             "lintFilePatterns": ["apps/apollo-story-e2e/**/*.{js,ts}"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["apollo-story"]
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "packageManager": "npm"
   },
   "schematics": {
     "@nrwl/angular": {
@@ -227,6 +227,5 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  },
-  "defaultProject": "apollo-story"
+  }
 }

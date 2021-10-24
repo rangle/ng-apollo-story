@@ -6,9 +6,9 @@ import { GetCurrencyGQL } from '@nx-angular/apollo-story-data';
   templateUrl: './rates.page.html',
 })
 export class RatesPageComponent {
-  rateData$ = null;
+  rateData$;
 
   constructor(private getCurrencyGQL: GetCurrencyGQL) {
-    this.getCurrencyGQL.fetch({ currency: 'USD' }).subscribe(console.log);
+    this.rateData$ = this.getCurrencyGQL.fetch({ currency: 'USD' });
   }
 }
