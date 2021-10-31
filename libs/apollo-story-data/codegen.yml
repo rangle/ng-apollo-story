@@ -1,6 +1,6 @@
 # libs/data-access/codegen.yml
 overwrite: true
-schema: https://48p1r2roz4.sse.codesandbox.io
+schema: libs/apollo-story-data/src/lib/schemas/schema.graphql
 generates:
   libs/apollo-story-data/src/lib/generated/generated.ts:
     documents: 'libs/apollo-story-data/src/lib/graphql/**/*.graphql'

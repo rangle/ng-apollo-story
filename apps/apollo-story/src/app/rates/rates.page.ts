@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { GetCurrencyGQL } from '@nx-angular/apollo-story-data';
+import { GetNotesGQL } from '@nx-angular/apollo-story-data';
 
 @Component({
   selector: 'app-rates-page',
   templateUrl: './rates.page.html',
 })
 export class RatesPageComponent {
-  rateData$;
+  notesData$;
 
-  constructor(private getCurrencyGQL: GetCurrencyGQL) {
-    this.rateData$ = this.getCurrencyGQL.fetch({ currency: 'USD' });
+  constructor(private getNotesGQL: GetNotesGQL) {
+    this.notesData$ = this.getNotesGQL.fetch();
   }
 }

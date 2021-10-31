@@ -1,24 +1,34 @@
-""""""
-directive @cacheControl on FIELD_DEFINITION | OBJECT | INTERFACE
-""""""
-type Query {
-  """"""
-  rates("""""" currency: String!): [ExchangeRate]
+schema {
+  query: Query
+  mutation: Mutation
 }
-""""""
-type ExchangeRate {
-  """"""
-  currency: String
-  """"""
-  rate: String
-  """"""
+
+type Mutation {
+  createNote(note: NoteInput!): Note
+  deleteNote(noteId: String!): String
+  updateNote(note: UpdateNoteInput!): Note
+}
+
+#  graphql/schema.graphql
+type Note {
+  completed: Boolean!
+  id: ID!
+  name: String!
+}
+
+type Query {
+  getNoteById(noteId: String!): Note
+  listNotes: [Note]
+}
+
+input NoteInput {
+  completed: Boolean!
+  id: ID!
+  name: String!
+}
+
+input UpdateNoteInput {
+  completed: Boolean
+  id: ID!
   name: String
 }
-enum CacheControlScope {
-  """"""
-  PUBLIC
-  """"""
-  PRIVATE
-}
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload

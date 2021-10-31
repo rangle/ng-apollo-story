@@ -1,4 +1,4 @@
-# NxAngular
+# Apollo Story
 
 This project was generated using [Nx](https://nx.dev).
 

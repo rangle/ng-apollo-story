@@ -155,7 +155,7 @@
             "commands": [
               {
                 "description": "download schema",
-                "command": "npx rover graph introspect https://48p1r2roz4.sse.codesandbox.io > libs/apollo-story-data/src/lib/schemas/schema.graphql"
+                "command": "aws appsync get-introspection-schema --api-id 6no36hardbbtvlfuuvimll7pji --format SDL libs/apollo-story-data/src/lib/schemas/schema.graphql"
               },
               {
                 "description": "generate resolvers",
@@ -163,7 +163,7 @@
               },
               {
                 "description": "generate mocks",
-                "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/currency-mock.json"
+                "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/notes-mock.json"
               }
             ]
           }
@@ -199,33 +199,9 @@
       },
       "tags": [],
       "implicitDependencies": ["apollo-story"]
-    }
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
     },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
+    "rates-cdk-app": {
+      "root": "libs/rates-cdk-app"
     }
   }
 }

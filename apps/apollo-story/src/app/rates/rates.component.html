@@ -1,7 +1,11 @@
-<div *ngIf="ratesData?.loading !== false">Loading...</div>
-<div *ngIf="ratesData?.error">Error :(</div>
-<div *ngIf="ratesData?.data?.rates">
-  <div *ngFor="let rate of ratesData?.data?.rates">
-    <p>{{ rate?.currency }}: {{ rate?.rate }}</p>
+<app-rates-graph></app-rates-graph>
+<div *ngIf="notesData?.loading !== false">Loading...</div>
+<div *ngIf="notesData?.error">Error :(</div>
+<div *ngIf="notesData?.data?.listNotes">
+  <div *ngFor="let rate of notesData?.data?.listNotes">
+    <p>
+      {{ rate?.id }}: {{ rate?.name }} -
+      {{ rate?.completed ? 'completed' : 'incomplete' }}
+    </p>
   </div>
 </div>

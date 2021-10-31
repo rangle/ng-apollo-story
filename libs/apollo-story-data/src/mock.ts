@@ -1,19 +1,20 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { addMocksToSchema } from '@graphql-tools/mock';
 import { graphql } from 'graphql';
+import * as casual from 'casual';
 import * as fs from 'fs';
 
 // Fill this in with the schema string
 const schemaString = fs.readFileSync(
-  'libs/apollo-story-data/src/lib/schemas/schema.graphql',
+  'libs/apollo-story-data/src/lib/schemas/custom.graphql',
   'utf8'
 );
 
 const mocks = {
-  ExchangeRate: () => ({
-    currency: 'USD',
-    rate: '1.0',
-    name: 'United States Dollar',
+  Note: () => ({
+    id: casual.integer(1, 100).toString(),
+    name: casual.string,
+    completed: casual.boolean,
   }),
 };
 
@@ -24,11 +25,11 @@ const schema = makeExecutableSchema({ typeDefs: schemaString });
 const schemaWithMocks = addMocksToSchema({ schema, mocks });
 
 const query = /* GraphQL */ `
-  query getCurrency {
-    rates: rates(currency: "USD") {
+  query getNotes {
+    listNotes {
+      id
       name
-      currency
-      rate
+      completed
     }
   }
 `;

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ApolloQueryResult } from '@apollo/client';
-import { GetCurrencyQuery } from '@nx-angular/apollo-story-data';
+import { GetNotesQuery } from '@nx-angular/apollo-story-data';
 
 @Component({
   selector: 'app-rates',
@@ -9,5 +9,5 @@ import { GetCurrencyQuery } from '@nx-angular/apollo-story-data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RatesComponent {
-  @Input() ratesData?: ApolloQueryResult<GetCurrencyQuery> | null;
+  @Input() notesData?: ApolloQueryResult<GetNotesQuery> | null;
 }

@@ -12,45 +12,71 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
 };
 
-export enum CacheControlScope {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-}
+export type Mutation = {
+  __typename?: 'Mutation';
+  createNote?: Maybe<Note>;
+  deleteNote?: Maybe<Scalars['String']>;
+  updateNote?: Maybe<Note>;
+};
 
-export type ExchangeRate = {
-  __typename?: 'ExchangeRate';
-  currency?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  rate?: Maybe<Scalars['String']>;
+
+export type MutationCreateNoteArgs = {
+  note: NoteInput;
+};
+
+
+export type MutationDeleteNoteArgs = {
+  noteId: Scalars['String'];
+};
+
+
+export type MutationUpdateNoteArgs = {
+  note: UpdateNoteInput;
+};
+
+export type Note = {
+  __typename?: 'Note';
+  completed: Scalars['Boolean'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
+export type NoteInput = {
+  completed: Scalars['Boolean'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  rates?: Maybe<Array<Maybe<ExchangeRate>>>;
+  getNoteById?: Maybe<Note>;
+  listNotes?: Maybe<Array<Maybe<Note>>>;
 };
 
 
-export type QueryRatesArgs = {
-  currency: Scalars['String'];
+export type QueryGetNoteByIdArgs = {
+  noteId: Scalars['String'];
 };
 
-export type GetCurrencyQueryVariables = Exact<{
-  currency: Scalars['String'];
-}>;
+export type UpdateNoteInput = {
+  completed?: Maybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+};
+
+export type GetNotesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCurrencyQuery = { __typename?: 'Query', rates?: Maybe<Array<Maybe<{ __typename?: 'ExchangeRate', name?: Maybe<string>, currency?: Maybe<string>, rate?: Maybe<string> }>>> };
+export type GetNotesQuery = { __typename?: 'Query', listNotes?: Maybe<Array<Maybe<{ __typename?: 'Note', id: string, name: string, completed: boolean }>>> };
 
-export const GetCurrencyDocument = gql`
-    query getCurrency($currency: String!) {
-  rates: rates(currency: $currency) {
+export const GetNotesDocument = gql`
+    query getNotes {
+  listNotes {
+    id
     name
-    currency
-    rate
+    completed
   }
 }
     `;
@@ -58,8 +84,8 @@ export const GetCurrencyDocument = gql`
   @Injectable({
     providedIn: 'root'
   })
-  export class GetCurrencyGQL extends Apollo.Query<GetCurrencyQuery, GetCurrencyQueryVariables> {
-    document = GetCurrencyDocument;
+  export class GetNotesGQL extends Apollo.Query<GetNotesQuery, GetNotesQueryVariables> {
+    document = GetNotesDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
