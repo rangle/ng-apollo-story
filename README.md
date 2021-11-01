@@ -12,13 +12,12 @@ Run `ng serve apollo-story` for a dev server. Navigate to http://localhost:4200/
 
 Run `nx run apollo-story:storybook` to build and run Storybook. Navigate to http://localhost:4400/.
 
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
 ## Code Gen
 
 Run `nx run apollo-story-data:generate` to generate GraphQL schemas and mock data.
+
+GraphQL Code Generator: https://www.graphql-code-generator.com/docs/getting-started/codegen-config
+GraphQL Tools Mocking Documentation: https://www.graphql-tools.com/docs/mocking
 
 ## Build
 
