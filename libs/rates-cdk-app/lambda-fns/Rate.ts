@@ -6,7 +6,7 @@ type Rate = {
   volume: number;
   volumeChange: number;
   price: number;
-  priceCAD: number;
+  priceCad: number;
 };
 
 export default Rate;

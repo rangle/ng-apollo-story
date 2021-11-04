@@ -16,13 +16,24 @@ input UpdateNoteInput {
   completed: Boolean
 }
 
+type Rate {
+  ticker: String!
+  timeUpdated: Int!
+  name: String!
+  rank: Int!
+  volume: Float!
+  volumeChange: Float!
+  price: Float!
+  priceCad: Float!
+}
+
 type Query {
   getNoteById(noteId: String!): Note
   listNotes: [Note]
+  getCryptoByTicker(ticker: String!): [Rate]
 }
 
 type Mutation {
-  createNote(note: NoteInput!): Note
   updateNote(note: UpdateNoteInput!): Note
   deleteNote(noteId: String!): String
 }

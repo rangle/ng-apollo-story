@@ -64,8 +64,8 @@ export class RatesCdkAppStack extends cdk.Stack {
     });
 
     lambdaDs.createResolver({
-      typeName: 'Mutation',
-      fieldName: 'createNote',
+      typeName: 'Query',
+      fieldName: 'getCryptoByTicker',
     });
 
     lambdaDs.createResolver({
@@ -103,6 +103,9 @@ export class RatesCdkAppStack extends cdk.Stack {
         type: ddb.AttributeType.NUMBER,
       },
     });
+
+    ratesLambda.addEnvironment('RATES_TABLE', ratesTable.tableName);
+    ratesTable.grantFullAccess(ratesLambda);
 
     const ratesCronLambda = new lambda.Function(this, 'Singleton', {
       code: lambda.Code.fromAsset('lambda-fns'),
