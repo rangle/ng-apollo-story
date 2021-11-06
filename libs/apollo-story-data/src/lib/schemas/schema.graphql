@@ -4,12 +4,10 @@ schema {
 }
 
 type Mutation {
-  createNote(note: NoteInput!): Note
   deleteNote(noteId: String!): String
   updateNote(note: UpdateNoteInput!): Note
 }
 
-#  graphql/schema.graphql
 type Note {
   completed: Boolean!
   id: ID!
@@ -17,8 +15,20 @@ type Note {
 }
 
 type Query {
+  getCryptoByTicker(ticker: String!): [Rate]
   getNoteById(noteId: String!): Note
   listNotes: [Note]
+}
+
+type Rate {
+  name: String!
+  price: Float!
+  priceCad: Float!
+  rank: Int!
+  ticker: String!
+  timeUpdated: Float!
+  volume: Float!
+  volumeChange: Float!
 }
 
 input NoteInput {

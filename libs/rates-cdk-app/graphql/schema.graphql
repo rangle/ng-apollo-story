@@ -18,7 +18,7 @@ input UpdateNoteInput {
 
 type Rate {
   ticker: String!
-  timeUpdated: Int!
+  timeUpdated: Float!
   name: String!
   rank: Int!
   volume: Float!

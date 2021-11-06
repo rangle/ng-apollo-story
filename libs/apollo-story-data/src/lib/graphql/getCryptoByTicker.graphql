@@ -1,0 +1,7 @@
+# This generates the queries in the generated output file.
+query getCryptoByTicker($ticker: String!) {
+  rates: getCryptoByTicker(ticker: $ticker) {
+    price
+    timeUpdated
+  }
+}

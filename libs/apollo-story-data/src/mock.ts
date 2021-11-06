@@ -6,7 +6,12 @@ import * as fs from 'fs';
 
 // Fill this in with the schema string
 const schemaString = fs.readFileSync(
-  'libs/apollo-story-data/src/lib/schemas/custom.graphql',
+  'libs/apollo-story-data/src/lib/schemas/schema.graphql',
+  'utf8'
+);
+
+const operation = fs.readFileSync(
+  'libs/apollo-story-data/src/lib/graphql/getCryptoByTicker.graphql',
   'utf8'
 );
 
@@ -24,16 +29,8 @@ const schema = makeExecutableSchema({ typeDefs: schemaString });
 // Create a new schema with mocks
 const schemaWithMocks = addMocksToSchema({ schema, mocks });
 
-const query = /* GraphQL */ `
-  query getNotes {
-    listNotes {
-      id
-      name
-      completed
-    }
-  }
-`;
+const query = operation;
 
-graphql(schemaWithMocks, query).then((result) =>
-  console.log(JSON.stringify(result))
+graphql(schemaWithMocks, query, undefined, undefined, { ticker: 'CRO' }).then(
+  (result) => console.log(JSON.stringify(result))
 );

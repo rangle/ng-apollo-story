@@ -16,14 +16,8 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createNote?: Maybe<Note>;
   deleteNote?: Maybe<Scalars['String']>;
   updateNote?: Maybe<Note>;
-};
-
-
-export type MutationCreateNoteArgs = {
-  note: NoteInput;
 };
 
 
@@ -51,13 +45,31 @@ export type NoteInput = {
 
 export type Query = {
   __typename?: 'Query';
+  getCryptoByTicker?: Maybe<Array<Maybe<Rate>>>;
   getNoteById?: Maybe<Note>;
   listNotes?: Maybe<Array<Maybe<Note>>>;
 };
 
 
+export type QueryGetCryptoByTickerArgs = {
+  ticker: Scalars['String'];
+};
+
+
 export type QueryGetNoteByIdArgs = {
   noteId: Scalars['String'];
+};
+
+export type Rate = {
+  __typename?: 'Rate';
+  name: Scalars['String'];
+  price: Scalars['Float'];
+  priceCad: Scalars['Float'];
+  rank: Scalars['Int'];
+  ticker: Scalars['String'];
+  timeUpdated: Scalars['Float'];
+  volume: Scalars['Float'];
+  volumeChange: Scalars['Float'];
 };
 
 export type UpdateNoteInput = {
@@ -66,11 +78,37 @@ export type UpdateNoteInput = {
   name?: Maybe<Scalars['String']>;
 };
 
+export type GetCryptoByTickerQueryVariables = Exact<{
+  ticker: Scalars['String'];
+}>;
+
+
+export type GetCryptoByTickerQuery = { __typename?: 'Query', rates?: Maybe<Array<Maybe<{ __typename?: 'Rate', price: number, timeUpdated: number }>>> };
+
 export type GetNotesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetNotesQuery = { __typename?: 'Query', listNotes?: Maybe<Array<Maybe<{ __typename?: 'Note', id: string, name: string, completed: boolean }>>> };
 
+export const GetCryptoByTickerDocument = gql`
+    query getCryptoByTicker($ticker: String!) {
+  rates: getCryptoByTicker(ticker: $ticker) {
+    price
+    timeUpdated
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetCryptoByTickerGQL extends Apollo.Query<GetCryptoByTickerQuery, GetCryptoByTickerQueryVariables> {
+    document = GetCryptoByTickerDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const GetNotesDocument = gql`
     query getNotes {
   listNotes {

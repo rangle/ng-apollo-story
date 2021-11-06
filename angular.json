@@ -163,7 +163,7 @@
               },
               {
                 "description": "generate mocks",
-                "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/notes-mock.json"
+                "command": "npx ts-node libs/apollo-story-data/src/mock.ts > libs/apollo-story-data/mocks/getCryptoByTicker-mock.json"
               }
             ]
           }
