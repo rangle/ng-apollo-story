@@ -5,16 +5,6 @@
   display: block;
   font-family: sans-serif;
   min-width: 300px;
-  max-width: 600px;
-  margin: 50px auto;
-}
-
-.gutter-left {
-  margin-left: 9px;
-}
-
-.col-span-2 {
-  grid-column: span 2;
 }
 
 .flex {
@@ -28,10 +18,11 @@ header {
   color: white;
   padding: 5px;
   border-radius: 3px;
+  margin-bottom: 16px;
 }
 
 main {
-  padding: 0 36px;
+  padding: 0 24px;
 }
 
 p {
@@ -40,8 +31,6 @@ p {
 
 h1 {
   text-align: center;
-  margin-left: 18px;
-  font-size: 24px;
 }
 
 h2 {
@@ -94,40 +83,4 @@ summary {
   outline: none;
   height: 36px;
   line-height: 36px;
-}
-
-.github-star-container {
-  margin-top: 12px;
-  line-height: 20px;
-}
-
-.github-star-container a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-}
-
-.github-star-badge {
-  color: #24292e;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  padding: 3px 10px;
-  border: 1px solid rgba(27, 31, 35, 0.2);
-  border-radius: 3px;
-  background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
-  margin-left: 4px;
-  font-weight: 600;
-}
-
-.github-star-badge:hover {
-  background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
-  border-color: rgba(27, 31, 35, 0.35);
-  background-position: -0.5em;
-}
-.github-star-badge .material-icons {
-  height: 16px;
-  width: 16px;
-  margin-right: 4px;
 }

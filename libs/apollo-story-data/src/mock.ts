@@ -47,7 +47,10 @@ const schemaWithMocks = addMocksToSchema({ schema, mocks, resolvers });
 
 const query = operation;
 
-graphql(schemaWithMocks, query, undefined, undefined, { ticker: 'CRO' })
+graphql(schemaWithMocks, query, undefined, undefined, {
+  ticker: 'CRO',
+  granularity: 'DAY',
+})
   .then((result) => ({
     ...result,
     data: {

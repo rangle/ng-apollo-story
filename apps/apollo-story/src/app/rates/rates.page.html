@@ -1,1 +1,5 @@
-<app-rates [ratesData]="ratesData$ | async"></app-rates>
+<app-rates
+  [ratesData]="ratesData$ | async"
+  [currentTicker]="currentTicker"
+  (tickerChange)="onTickerChange($event)"
+></app-rates>

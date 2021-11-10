@@ -14,6 +14,12 @@ export type Scalars = {
   Float: number;
 };
 
+export enum Granularity {
+  Day = 'DAY',
+  Hour = 'HOUR',
+  TenMinute = 'TEN_MINUTE'
+}
+
 export type Mutation = {
   __typename?: 'Mutation';
   deleteNote?: Maybe<Scalars['String']>;
@@ -52,6 +58,7 @@ export type Query = {
 
 
 export type QueryGetCryptoByTickerArgs = {
+  granularity: Granularity;
   ticker: Scalars['String'];
 };
 
@@ -79,6 +86,7 @@ export type GetNotesQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetNotesQuery = { __typename?: 'Query', listNotes?: Maybe<Array<Maybe<{ __typename?: 'Note', id: string, name: string, completed: boolean }>>> };
 
 export type GetCryptoByTickerQueryVariables = Exact<{
+  granularity: Granularity;
   ticker: Scalars['String'];
 }>;
 
@@ -106,8 +114,8 @@ export const GetNotesDocument = gql`
     }
   }
 export const GetCryptoByTickerDocument = gql`
-    query getCryptoByTicker($ticker: String!) {
-  rates: getCryptoByTicker(ticker: $ticker) {
+    query getCryptoByTicker($granularity: Granularity!, $ticker: String!) {
+  rates: getCryptoByTicker(granularity: $granularity, ticker: $ticker) {
     price
     timeUpdated
   }

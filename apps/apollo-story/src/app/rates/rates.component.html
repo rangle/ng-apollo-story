@@ -1,6 +1,16 @@
-<app-rates-graph
-  *ngIf="!ratesData?.loading"
-  [data]="ratesData?.data"
-></app-rates-graph>
+<div *ngIf="!ratesData?.loading">
+  <div [formGroup]="rateForm">
+    <label>Ticker:</label>
+    <select formControlName="ticker" (change)="updateTicker()">
+      <option
+        *ngFor="let ticker of ratesData?.data?.tickers"
+        [ngValue]="ticker"
+      >
+        {{ ticker }}
+      </option>
+    </select>
+  </div>
+  <app-rates-graph [data]="ratesData?.data"></app-rates-graph>
+</div>
 <div *ngIf="ratesData?.loading !== false">Loading...</div>
 <div *ngIf="ratesData?.error">Error :(</div>

@@ -1,6 +1,6 @@
 # This generates the queries in the generated output file.
-query getCryptoByTicker($ticker: String!) {
-  rates: getCryptoByTicker(ticker: $ticker) {
+query getCryptoByTicker($granularity: Granularity!, $ticker: String!) {
+  rates: getCryptoByTicker(granularity: $granularity, ticker: $ticker) {
     price
     timeUpdated
   }

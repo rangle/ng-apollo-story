@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Riforma;
+  src: url(assets/RiformaLL-Medium.woff2);
+}
+
+@font-face {
+  font-family: RangleRiforma;
+  src: url(assets/RangleRiformaWeb-Light.woff2);
+}
+
+body h1 {
+  font-family: Riforma;
+}
+
+body text {
+  font-family: RangleRiforma;
+}

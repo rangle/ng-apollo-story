@@ -53,7 +53,7 @@ export class RatesGraphComponent implements OnInit, OnChanges {
       .append('svg')
       .attr(
         'viewBox',
-        `0 0 ${this.width + this.margin} ${this.height + this.margin * 3}`
+        `0 0 ${this.width + this.margin * 2} ${this.height + this.margin * 3}`
       )
       .append('g')
       .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');

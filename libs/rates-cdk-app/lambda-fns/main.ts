@@ -13,6 +13,7 @@ type AppSyncEvent = {
     noteId: string;
     note: Note;
     ticker: string;
+    granularity: 'DAY' | 'HOUR' | 'TEN_MINUTE';
   };
 };
 
@@ -25,7 +26,10 @@ exports.handler = async (event: AppSyncEvent) => {
     case 'updateNote':
       return await updateNote(event.arguments.note);
     case 'getCryptoByTicker':
-      return await getCryptoByTicker(event.arguments.ticker);
+      return await getCryptoByTicker(
+        event.arguments.ticker,
+        event.arguments.granularity
+      );
     case 'getTickers':
       return await getTickers();
     default:

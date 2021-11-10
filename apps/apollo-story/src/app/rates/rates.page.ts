@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { GetCryptoByTickerGQL } from '@nx-angular/apollo-story-data';
+import {
+  GetCryptoByTickerGQL,
+  Granularity,
+} from '@nx-angular/apollo-story-data';
 
 @Component({
   selector: 'app-rates-page',
@@ -8,7 +11,21 @@ import { GetCryptoByTickerGQL } from '@nx-angular/apollo-story-data';
 export class RatesPageComponent {
   ratesData$;
 
+  currentTicker = 'CRO';
+  granularity = Granularity.Hour;
+
   constructor(private getCryptoByTicker: GetCryptoByTickerGQL) {
-    this.ratesData$ = this.getCryptoByTicker.fetch({ ticker: 'ETH' });
+    this.ratesData$ = this.getCryptoByTicker.fetch({
+      ticker: 'CRO',
+      granularity: this.granularity,
+    });
+  }
+
+  onTickerChange(ticker: string) {
+    this.currentTicker = ticker;
+    this.ratesData$ = this.getCryptoByTicker.fetch({
+      ticker,
+      granularity: this.granularity,
+    });
   }
 }

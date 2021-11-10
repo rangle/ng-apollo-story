@@ -16,6 +16,12 @@ input UpdateNoteInput {
   completed: Boolean
 }
 
+enum Granularity {
+  DAY
+  HOUR
+  TEN_MINUTE
+}
+
 type Rate {
   ticker: String!
   timeUpdated: Float!
@@ -30,7 +36,7 @@ type Rate {
 type Query {
   listNotes: [Note]
   getTickers: [String]
-  getCryptoByTicker(ticker: String!): [Rate]
+  getCryptoByTicker(ticker: String!, granularity: Granularity!): [Rate]
 }
 
 type Mutation {

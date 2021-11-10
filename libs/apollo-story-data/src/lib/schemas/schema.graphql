@@ -15,7 +15,7 @@ type Note {
 }
 
 type Query {
-  getCryptoByTicker(ticker: String!): [Rate]
+  getCryptoByTicker(granularity: Granularity!, ticker: String!): [Rate]
   getTickers: [String]
   listNotes: [Note]
 }
@@ -29,6 +29,12 @@ type Rate {
   timeUpdated: Float!
   volume: Float!
   volumeChange: Float!
+}
+
+enum Granularity {
+  DAY
+  HOUR
+  TEN_MINUTE
 }
 
 input NoteInput {
