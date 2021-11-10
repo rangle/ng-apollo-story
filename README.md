@@ -1,5 +1,9 @@
 # Apollo Story
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/283a795e-4253-42c2-be70-2d6f5b709cd1/deploy-status)](https://app.netlify.com/sites/ng-apollo-story/deploys)
+
+[Preview Site](https://ng-apollo-story.netlify.app/)
+
 This project was generated using [Nx](https://nx.dev).
 
 [Nx Documentation](https://nx.dev/angular)
