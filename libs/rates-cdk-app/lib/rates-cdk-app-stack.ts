@@ -55,17 +55,17 @@ export class RatesCdkAppStack extends cdk.Stack {
 
     lambdaDs.createResolver({
       typeName: 'Query',
-      fieldName: 'getNoteById',
-    });
-
-    lambdaDs.createResolver({
-      typeName: 'Query',
       fieldName: 'listNotes',
     });
 
     lambdaDs.createResolver({
       typeName: 'Query',
       fieldName: 'getCryptoByTicker',
+    });
+
+    lambdaDs.createResolver({
+      typeName: 'Query',
+      fieldName: 'getTickers',
     });
 
     lambdaDs.createResolver({

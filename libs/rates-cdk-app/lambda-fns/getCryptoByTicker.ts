@@ -11,7 +11,6 @@ async function getCryptoByTicker(ticker: string) {
   };
   try {
     const { Items } = await docClient.query(params).promise();
-    console.log({ Items });
     return Items;
   } catch (err) {
     console.log('DynamoDB error: ', err);

@@ -16,7 +16,7 @@ type Note {
 
 type Query {
   getCryptoByTicker(ticker: String!): [Rate]
-  getNoteById(noteId: String!): Note
+  getTickers: [String]
   listNotes: [Note]
 }
 

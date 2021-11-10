@@ -46,18 +46,13 @@ export type NoteInput = {
 export type Query = {
   __typename?: 'Query';
   getCryptoByTicker?: Maybe<Array<Maybe<Rate>>>;
-  getNoteById?: Maybe<Note>;
+  getTickers?: Maybe<Array<Maybe<Scalars['String']>>>;
   listNotes?: Maybe<Array<Maybe<Note>>>;
 };
 
 
 export type QueryGetCryptoByTickerArgs = {
   ticker: Scalars['String'];
-};
-
-
-export type QueryGetNoteByIdArgs = {
-  noteId: Scalars['String'];
 };
 
 export type Rate = {
@@ -78,37 +73,18 @@ export type UpdateNoteInput = {
   name?: Maybe<Scalars['String']>;
 };
 
-export type GetCryptoByTickerQueryVariables = Exact<{
-  ticker: Scalars['String'];
-}>;
-
-
-export type GetCryptoByTickerQuery = { __typename?: 'Query', rates?: Maybe<Array<Maybe<{ __typename?: 'Rate', price: number, timeUpdated: number }>>> };
-
 export type GetNotesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetNotesQuery = { __typename?: 'Query', listNotes?: Maybe<Array<Maybe<{ __typename?: 'Note', id: string, name: string, completed: boolean }>>> };
 
-export const GetCryptoByTickerDocument = gql`
-    query getCryptoByTicker($ticker: String!) {
-  rates: getCryptoByTicker(ticker: $ticker) {
-    price
-    timeUpdated
-  }
-}
-    `;
+export type GetCryptoByTickerQueryVariables = Exact<{
+  ticker: Scalars['String'];
+}>;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetCryptoByTickerGQL extends Apollo.Query<GetCryptoByTickerQuery, GetCryptoByTickerQueryVariables> {
-    document = GetCryptoByTickerDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
+
+export type GetCryptoByTickerQuery = { __typename?: 'Query', tickers?: Maybe<Array<Maybe<string>>>, rates?: Maybe<Array<Maybe<{ __typename?: 'Rate', price: number, timeUpdated: number }>>> };
+
 export const GetNotesDocument = gql`
     query getNotes {
   listNotes {
@@ -124,6 +100,26 @@ export const GetNotesDocument = gql`
   })
   export class GetNotesGQL extends Apollo.Query<GetNotesQuery, GetNotesQueryVariables> {
     document = GetNotesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetCryptoByTickerDocument = gql`
+    query getCryptoByTicker($ticker: String!) {
+  rates: getCryptoByTicker(ticker: $ticker) {
+    price
+    timeUpdated
+  }
+  tickers: getTickers
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetCryptoByTickerGQL extends Apollo.Query<GetCryptoByTickerQuery, GetCryptoByTickerQueryVariables> {
+    document = GetCryptoByTickerDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

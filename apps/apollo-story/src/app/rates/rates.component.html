@@ -1,3 +1,6 @@
-<app-rates-graph [data]="ratesData?.data"></app-rates-graph>
+<app-rates-graph
+  *ngIf="!ratesData?.loading"
+  [data]="ratesData?.data"
+></app-rates-graph>
 <div *ngIf="ratesData?.loading !== false">Loading...</div>
 <div *ngIf="ratesData?.error">Error :(</div>

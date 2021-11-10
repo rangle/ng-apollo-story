@@ -6,6 +6,8 @@ This library was generated with [Nx](https://nx.dev).
 
 Run `nx test apollo-story-data` to execute the unit tests.
 
-## Running Generate
+## Generating Data
+
+Run `nx run apollo-story-data:download-schemas` to download GraphQL schemas from appsync.
 
 Run `nx run apollo-story-data:generate` to generate types.

@@ -6,10 +6,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import {
-  cryptoMock,
-  GetCryptoByTickerQuery,
-} from '@nx-angular/apollo-story-data';
+import { GetCryptoByTickerQuery } from '@nx-angular/apollo-story-data';
 import * as d3 from 'd3';
 
 type GraphData = {
@@ -38,12 +35,7 @@ export class RatesGraphComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.createSvg();
     this.drawAxis({ yMax: 1, yMin: 0 });
-    this.updateData(
-      cryptoMock.data.rates.map((r) => ({
-        datetime: r.timeUpdated,
-        value: r.price,
-      }))
-    );
+    this.drawData();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,34 +43,9 @@ export class RatesGraphComponent implements OnInit, OnChanges {
       changes['data'].currentValue !== changes['data'].previousValue &&
       this.data?.rates
     ) {
-      this.svg?.selectAll('*').remove();
-      console.log(this.data.rates);
-      const { max, min } = this.findMaxMin(this.data?.rates, 'price');
-      const tenPercent = (max - min) / 10;
-      console.log({ max, min });
-      this.drawAxis({ yMax: max + tenPercent, yMin: min - tenPercent });
-      if (this.data?.rates) {
-        this.updateData(
-          this.data.rates.map((r) => ({
-            datetime: r?.timeUpdated || 0,
-            value: r?.price || 0,
-          }))
-        );
-      }
+      this.drawData();
     }
   }
-
-  private findMaxMin = (data: any, field: string) =>
-    data?.reduce(
-      (acc: any, curr: any) => {
-        const max =
-          acc.max === null ? curr[field] : Math.max(acc.max, curr[field] || 0);
-        const min =
-          acc.min === null ? curr[field] : Math.min(acc.min, curr[field] || 0);
-        return { max, min };
-      },
-      { max: null, min: null }
-    );
 
   private createSvg() {
     this.svg = d3
@@ -107,6 +74,33 @@ export class RatesGraphComponent implements OnInit, OnChanges {
 
     this.svg?.append('g').call(d3.axisLeft(this.y));
   }
+
+  private drawData = () => {
+    if (this.data?.rates) {
+      this.svg?.selectAll('*').remove();
+      const { max, min } = this.findMaxMin(this.data?.rates, 'price');
+      const tenPercent = (max - min) / 10;
+      this.drawAxis({ yMax: max + tenPercent, yMin: min - tenPercent });
+      this.updateData(
+        this.data.rates.map((r) => ({
+          datetime: r?.timeUpdated || 0,
+          value: r?.price || 0,
+        }))
+      );
+    }
+  };
+
+  private findMaxMin = (data: any, field: string) =>
+    data?.reduce(
+      (acc: any, curr: any) => {
+        const max =
+          acc.max === null ? curr[field] : Math.max(acc.max, curr[field] || 0);
+        const min =
+          acc.min === null ? curr[field] : Math.min(acc.min, curr[field] || 0);
+        return { max, min };
+      },
+      { max: null, min: null }
+    );
 
   private updateData(data: GraphData[]) {
     if (this.x && this.y) {

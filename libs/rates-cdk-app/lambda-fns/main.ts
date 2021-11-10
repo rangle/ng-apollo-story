@@ -1,9 +1,9 @@
 import deleteNote from './deleteNote';
-import getNoteById from './getNoteById';
 import listNotes from './listNotes';
 import updateNote from './updateNote';
 import Note from './Note';
 import getCryptoByTicker from './getCryptoByTicker';
+import getTickers from './getTickers';
 
 type AppSyncEvent = {
   info: {
@@ -18,8 +18,6 @@ type AppSyncEvent = {
 
 exports.handler = async (event: AppSyncEvent) => {
   switch (event.info.fieldName) {
-    case 'getNoteById':
-      return await getNoteById(event.arguments.noteId);
     case 'listNotes':
       return await listNotes();
     case 'deleteNote':
@@ -28,6 +26,8 @@ exports.handler = async (event: AppSyncEvent) => {
       return await updateNote(event.arguments.note);
     case 'getCryptoByTicker':
       return await getCryptoByTicker(event.arguments.ticker);
+    case 'getTickers':
+      return await getTickers();
     default:
       return null;
   }
