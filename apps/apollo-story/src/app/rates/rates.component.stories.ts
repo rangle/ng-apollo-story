@@ -14,11 +14,26 @@ export default {
       imports: [ReactiveFormsModule],
     }),
   ],
+  argTypes: {
+    currentTicker: {
+      control: {
+        type: 'text',
+      },
+    },
+    tickerChange: {
+      action: 'tickerChange',
+    },
+  },
 } as Meta;
 
 const Template: Story<RatesComponent> = (args) => ({
   props: args,
-  template: `<app-rates [ratesData]="ratesData"></app-rates>`,
+  template: `
+  <app-rates
+    [ratesData]="ratesData"
+    [currentTicker]="currentTicker"
+    (tickerChange)="tickerChange($event)">
+  </app-rates>`,
 });
 
 export const Rates = Template.bind({});
@@ -29,6 +44,7 @@ Rates.args = {
     loading: false,
     networkStatus: NetworkStatus.ready,
   },
+  currentTicker: 'CRO',
 };
 
 export const Loading = Template.bind({});
