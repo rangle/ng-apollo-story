@@ -23,7 +23,6 @@ type Query {
 type Rate {
   name: String!
   price: Float!
-  priceCad: Float!
   rank: Int!
   ticker: String!
   timeUpdated: Float!

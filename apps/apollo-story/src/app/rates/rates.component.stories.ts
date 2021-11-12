@@ -3,12 +3,16 @@ import { RatesComponent } from './rates.component';
 import { RatesGraphComponent } from './rates-graph/rates-graph.component';
 import { cryptoMock } from '@nx-angular/apollo-story-data';
 import { NetworkStatus } from '@apollo/client';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export default {
   title: 'Pages/Rates',
   component: RatesComponent,
   decorators: [
-    moduleMetadata({ declarations: [RatesComponent, RatesGraphComponent] }),
+    moduleMetadata({
+      declarations: [RatesComponent, RatesGraphComponent],
+      imports: [ReactiveFormsModule],
+    }),
   ],
 } as Meta;
 

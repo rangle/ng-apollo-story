@@ -66,7 +66,6 @@ export type Rate = {
   __typename?: 'Rate';
   name: Scalars['String'];
   price: Scalars['Float'];
-  priceCad: Scalars['Float'];
   rank: Scalars['Int'];
   ticker: Scalars['String'];
   timeUpdated: Scalars['Float'];

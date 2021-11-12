@@ -61,7 +61,7 @@ export class RatesGraphComponent implements OnInit, OnChanges {
 
   private drawAxis({ yMax, yMin }: { yMax: number; yMin: number }) {
     const minDate = new Date(2021, 9, 31);
-    const maxDate = new Date(2021, 10, 12);
+    const maxDate = new Date(2021, 10, 13);
 
     this.x = d3.scaleTime().domain([minDate, maxDate]).range([0, this.width]);
 
